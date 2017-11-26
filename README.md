@@ -1,6 +1,6 @@
 # Spring Boot Templates
 
-> The whole project contains many templates, including mvc, hibernate, eclipseLink and so on.
+> The whole project contains many templates, including mvc, and will add more template for using in the future.
 
 
 
