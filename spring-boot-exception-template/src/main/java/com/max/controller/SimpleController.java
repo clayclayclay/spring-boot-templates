@@ -16,23 +16,23 @@ import com.max.exception.SimpleException;
 public class SimpleController
 {
 
-	@GetMapping("/entities/{id}")
-	public String getEntity(@PathVariable String id)
-	{
+    @GetMapping("/entities/{id}")
+    public String getEntity(@PathVariable String id)
+    {
 
-		if (!(id.equals("id")))
-		{
-			throw new SimpleException("the id is invalid");
-		}
+        if (!(id.equals("id")))
+        {
+            throw new SimpleException("the id is invalid");
+        }
 
-		return "get entity successfully";
-	}
+        return "get entity successfully";
+    }
 
-	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Request Body is null")
-	@ExceptionHandler(NullPointerException.class)
-	@PostMapping("/entities")
-	public String createEntity(@RequestBody String requestBody)
-	{
-		throw new NullPointerException("Request Body is nul");
-	}
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Request Body is null")
+    @ExceptionHandler(NullPointerException.class)
+    @PostMapping("/entities")
+    public String createEntity(@RequestBody String requestBody)
+    {
+        throw new NullPointerException("Request Body is nul");
+    }
 }

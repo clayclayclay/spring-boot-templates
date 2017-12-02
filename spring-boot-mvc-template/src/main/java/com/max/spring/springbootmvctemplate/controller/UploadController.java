@@ -17,14 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController
 {
 
-    @RequestMapping("/prepareUpload")
-    public String hello()
-    {
-        return "upload";
-    }
-
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String login(@RequestParam("file")MultipartFile file)
+    public String login(@RequestParam("file") MultipartFile file)
     {
         System.out.println(">>>>>> File Name: " + file.getOriginalFilename());
         return "upload_success";

@@ -9,23 +9,25 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.max.exception.SimpleException;
 
-@ControllerAdvice 
+@ControllerAdvice
 public class ControllerAdviceExceptionHandler
 {
 
     @ExceptionHandler(SimpleException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public String handleIOException(SimpleException ex) {
-    	return ex.getErrMsg();
+    public String handleIOException(SimpleException ex)
+    {
+        return ex.getErrMsg();
     }
-    
+
     @ExceptionHandler(ClassCastException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public String handleIOException(ClassCastException ex) {
-    	return ex.getMessage();
+    public String handleIOException(ClassCastException ex)
+    {
+        return ex.getMessage();
     }
-    
+
 }
  

@@ -15,12 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController
 {
 
-    @RequestMapping("/hello")
-    public String hello()
-    {
-        return "login";
-    }
-
     @RequestMapping("/login")
     public String login(@RequestParam(value = "username", required = true) String username, @RequestParam(value = "password", required = true) String password, Model model)
     {
@@ -28,8 +22,7 @@ public class AdminController
         {
             model.addAttribute("name", username);
             return "success";
-        }
-        else
+        } else
         {
             return "failed";
         }

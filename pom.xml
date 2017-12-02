@@ -15,6 +15,10 @@
 		<module>spring-boot-mvc-template</module>
 		<module>spring-boot-exception-template</module>
 		<module>spring-boot-aop-template</module>
+		<module>spring-boot-validation-template</module>
+		<module>spring-boot-security-template</module>
+		<module>spring-boot-cloud-template</module>
+		<module>spring-boot-cache-template</module>
 	</modules>
 
 	<parent>
