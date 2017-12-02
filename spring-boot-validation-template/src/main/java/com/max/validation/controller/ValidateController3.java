@@ -1,68 +1,58 @@
 package com.max.validation.controller;
 
 import com.max.validation.model.Book;
-import com.max.validation.model.Student;
-import com.max.validation.validator.CustomValidator;
+import com.max.validation.util.MessageUtil;
+import com.max.validation.validator.SpringCustomValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 /**
- * Class File:ValidateController1
+ * Class File:ValidateController3
  * Author: Max
  * Created Date: 2017-11-29
  */
-@RestController("/v1")
-public class ValidateController1
+@RestController
+@RequestMapping("/v3")
+public class ValidateController3
 {
 
     @Autowired
-    private CustomValidator customValidator;
+    private SpringCustomValidator customValidator;
 
-
+    /**
+     * set the callback method for data validation
+     * the scope: only in this controller
+     *
+     * @param binder
+     */
     @InitBinder
-    protected void initBinder(WebDataBinder binder) {
+    protected void initBinder(WebDataBinder binder)
+    {
+        System.out.println("method 'initBinder' is called");
         binder.setValidator(customValidator);
     }
 
     @PostMapping("/book")
-    public String createBook(@Valid Book book, BindingResult result)
+    public String createBook(@RequestBody @Valid Book book, BindingResult bindingResult)
     {
-        if (result.hasErrors())
+        if (bindingResult.hasErrors())
         {
-            return getAllFieldsError(result.getAllErrors());
+            List<ObjectError> objectErrors = bindingResult.getAllErrors();
+            StringBuffer stringBuffer = new StringBuffer();
+            for (ObjectError objectError : objectErrors)
+            {
+                stringBuffer.append(MessageUtil.getFieldErrorMessage(objectError.getObjectName(), objectError.getCode()));
+            }
+            return stringBuffer.toString();
         }
         return "success";
     }
 
-    @PostMapping("/student")
-    public String createStudent(@Valid Student student, Errors errors)
-    {
-//        customValidator.validate(student, errors);
-        if (errors.hasErrors())
-        {
-            return getAllFieldsError(errors.getAllErrors());
-        }
-        return "success";
-    }
-
-
-    private String getAllFieldsError(List<ObjectError> fieldErrors)
-    {
-        StringBuffer stringBuffer = new StringBuffer();
-        for (ObjectError error : fieldErrors)
-        {
-            stringBuffer.append(error.getObjectName() + ":" + error.getDefaultMessage() + "\n");
-        }
-        return stringBuffer.toString();
-    }
 
 }
