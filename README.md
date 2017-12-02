@@ -8,6 +8,5 @@
 * [spring-boot-exception-template](https://github.com/clayclayclay/spring-boot-templates/tree/master/spring-boot-exception-template)
 * [spring-boot-aop-template](https://github.com/clayclayclay/spring-boot-templates/tree/master/spring-boot-aop-template)
 * [spring-boot-validation-template](https://github.com/clayclayclay/spring-boot-templates/tree/master/spring-boot-validation-template)
-* 
 
 
