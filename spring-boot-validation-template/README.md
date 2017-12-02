@@ -222,7 +222,7 @@
 
   * Key Point: the class is implemented the interface `Validator`, following Spring standard.
 
-  * Description: the validation logic is in the method `validate`. If want to use the validator, you can call it manually just like: []() or call the `WebDataBinder`to bind the validator, just like: []().
+  * Description: the validation logic is in the method `validate`. If want to use the validator, you can call it manually or call the `WebDataBinder`to bind the validator.
 
 * JavaxCustomValidator
 
@@ -260,7 +260,7 @@
 
   * Key Point: the class is implemented the interface `ConstraintValidator`, following the JSR-303 standard.
 
-  * Description: the validator is bound with annotation [LongDataType](), If the annotation `LongDataType` is used over any class or field, the validator will be called.
+  * Description: the validator is bound with annotation `LongDataType`, If the annotation `LongDataType` is used over any class or field, the validator will be called.
 
 **Annotation**
 
